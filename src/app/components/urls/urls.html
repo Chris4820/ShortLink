@@ -1,0 +1,33 @@
+<div class="table-container">
+  <table class="url-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Hash</th>
+        <th>Redirect To</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(url of urls; track url) {
+      <tr>
+        <td>{{ url.name }}</td>
+        <td>{{ url.hash }}</td>
+        <td>{{ url.redirectTo }}</td>
+        <td class="actions">
+          <a href="{{url.hash}}">
+            <button class="btn visit">Visitar</button>
+          </a>
+          <button (click)="deleteUrl(url.hash)" class="btn delete">Eliminar</button>
+        </td>
+      </tr>
+      } @empty {
+      <tr>
+        <td colspan="4" class="empty-message">
+          Nenhuma URL encurtada encontrada. Comece criando uma agora!
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

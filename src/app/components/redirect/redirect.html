@@ -1,0 +1,14 @@
+@if (error) {
+<div class="error-container">
+  <div class="error-content">
+    <h1 class="error-title">404</h1>
+    <p class="error-message">Página não encontrada</p>
+    <a href="/" class="btn-home">Ir para Home agora</a>
+  </div>
+</div>
+} @else {
+<div class="loading-container">
+  <div class="loading-spinner"></div>
+  <p class="loading-message">Verificando rota...</p>
+</div>
+}

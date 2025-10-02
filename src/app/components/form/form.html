@@ -1,0 +1,67 @@
+<div class="container">
+  <h1>Crie seu URL em tamanho pequeno!</h1>
+
+  <form [formGroup]="urlForm" (ngSubmit)="onSubmit()">
+
+    <!-- Campo Nome -->
+    <div class="form-group">
+      <label for="name">Nome: *</label>
+      <input id="name" type="text" formControlName="name" placeholder="Mínimo 3 caracteres"
+        [class.error]="isFieldInvalid('name')" />
+
+      <!-- Erros do campo nome -->
+      @if(isFieldInvalid('name')) {
+      <div class="error-message">
+        @if(urlForm.get('name')?.errors?.['required']) {
+        <small>
+          Nome é obrigatório
+        </small>
+        }
+
+        @if(urlForm.get('name')?.errors?.['minlength']) {
+        <small>
+          Nome deve ter no mínimo 3 caracteres
+        </small>
+        }
+      </div>
+      }
+    </div>
+
+    <!-- Campo URL -->
+    <div class="form-group">
+      <label for="redirectTo">URL: *</label>
+      <input id="redirectTo" type="url" formControlName="redirectTo" placeholder="https://exemplo.com"
+        [class.error]="isFieldInvalid('redirectTo')" />
+
+      <!-- Erros do campo URL -->
+      @if(isFieldInvalid('redirectTo')) {
+      <div class="error-message">
+        @if(urlForm.get('redirectTo')?.errors?.['required']) {
+        <small>
+          URL é obrigatória
+        </small>
+        }
+
+        @if(urlForm.get('redirectTo')?.errors?.['pattern']) {
+        <small>
+          URL inválida (deve começar com http:// ou https://)
+        </small>
+        }
+      </div>
+      }
+    </div>
+
+
+    <!-- Botões -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="urlForm.invalid" class="btn-primary">
+        Criar URL Curto
+      </button>
+
+      <button type="button" (click)="urlForm.reset()" class="btn-secondary">
+        Limpar
+      </button>
+    </div>
+  </form>
+
+</div>
