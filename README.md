@@ -25,19 +25,18 @@ Este projeto é um encurtador de links simples desenvolvido em **Angular 20**, q
    ```bash
    git clone https://github.com/teu-repo/shortlink-angular.git
    cd shortlink-angular
-Instalar dependências:
 
-bash
-Copiar código
+
+Instalar dependências:
+```bash
 npm install
 Iniciar o servidor de desenvolvimento:
 
-bash
-Copiar código
+```bash
 ng serve
 Abrir no browser:
 
-arduino
+```arduino
 Copiar código
 http://localhost:4200/
 🛠️ Estrutura principal
@@ -58,7 +57,7 @@ RedirectTo: https://www.google.com
 
 Será gerado automaticamente algo como:
 
-json
+```json
 Copiar código
 {
   "name": "Google",
@@ -67,7 +66,7 @@ Copiar código
 }
 Na lista, vais ver:
 
-nginx
+```nginx
 Copiar código
 Nome      Hash      RedirectTo
 Google    aB3kXy    https://www.google.com
