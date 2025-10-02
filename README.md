@@ -25,30 +25,38 @@ Este projeto é um encurtador de links simples desenvolvido em **Angular 20**, q
    ```bash
    git clone https://github.com/teu-repo/shortlink-angular.git
    cd shortlink-angular
+   ```
 
 
 Instalar dependências:
-```bash
-npm install
+  ```bash
+  npm install
+  ```
+
 Iniciar o servidor de desenvolvimento:
 
-```bash
-ng serve
+  ```bash
+  ng serve
+  ```
 Abrir no browser:
 
-```arduino
-Copiar código
-http://localhost:4200/
-🛠️ Estrutura principal
-LocalStorageService → serviço que gere os links no localStorage.
+  ```arduino
+  http://localhost:4200/
+  ```
 
-UrlsComponent → tabela que lista os links, com botões para visitar ou eliminar.
 
-RedirectComponent → trata do acesso a /:hash, verificando se existe e redirecionando.
+## 🛠️ Estrutura principal
 
-app.routes.ts → define as rotas principais da aplicação.
+**LocalStorageServic** → serviço que gere os links no localStorage.
 
-📖 Exemplo de utilização
+**UrlsComponent** → tabela que lista os links, com botões para visitar ou eliminar.
+
+**RedirectComponent** → trata do acesso a /:hash, verificando se existe e redirecionando.
+
+**app.routes.ts** → define as rotas principais da aplicação.
+
+##📖 Exemplo de utilização
+
 Adicionar um novo link (formulário interno da app).
 
 Nome: Google
@@ -58,18 +66,18 @@ RedirectTo: https://www.google.com
 Será gerado automaticamente algo como:
 
 ```json
-Copiar código
 {
   "name": "Google",
   "redirectTo": "https://www.google.com",
   "hash": "aB3kXy"
 }
+```
 Na lista, vais ver:
 
 ```nginx
-Copiar código
 Nome      Hash      RedirectTo
 Google    aB3kXy    https://www.google.com
+```
 Ao abrir http://localhost:4200/aB3kXy, és automaticamente redirecionado para https://www.google.com.
 
 Se o hash não existir, surge uma página de erro 404.
