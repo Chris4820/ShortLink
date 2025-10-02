@@ -1,59 +1,76 @@
-# Angularteste
+# 🔗 ShortLink – Encurtador de Links em Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+Este projeto é um encurtador de links simples desenvolvido em **Angular 20**, que utiliza o `localStorage` do navegador para guardar, listar e gerir os links encurtados.
 
-## Development server
+## 🚀 Funcionalidades
 
-To start a local development server, run:
+- Guardar links no `localStorage` com:
+  - **Nome** (para identificar o link)
+  - **RedirectTo** (URL original)
+  - **Hash** (URL curta gerada automaticamente)
+- Listagem de todos os links guardados numa tabela com:
+  - Nome
+  - Hash (URL curta → `/hash`)
+  - RedirectTo
+  - Botões de ação (**Visitar** / **Eliminar**)
+- Redirecionamento automático:
+  - Ao aceder a `http://localhost:4200/<hash>`, a aplicação verifica o hash:
+    - ✅ Se existir, redireciona para o URL original (`redirectTo`).
+    - ❌ Se não existir, mostra uma página de erro **404 – Link não encontrado**.
+- Atualização automática da lista quando se adiciona ou remove links, sem necessidade de recarregar a página.
 
-```bash
+## 📦 Instalação e Execução
+
+1. Clonar este repositório:
+   ```bash
+   git clone https://github.com/teu-repo/shortlink-angular.git
+   cd shortlink-angular
+Instalar dependências:
+
+bash
+Copiar código
+npm install
+Iniciar o servidor de desenvolvimento:
+
+bash
+Copiar código
 ng serve
-```
+Abrir no browser:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+arduino
+Copiar código
+http://localhost:4200/
+🛠️ Estrutura principal
+LocalStorageService → serviço que gere os links no localStorage.
 
-## Code scaffolding
+UrlsComponent → tabela que lista os links, com botões para visitar ou eliminar.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+RedirectComponent → trata do acesso a /:hash, verificando se existe e redirecionando.
 
-```bash
-ng generate component component-name
-```
+app.routes.ts → define as rotas principais da aplicação.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+📖 Exemplo de utilização
+Adicionar um novo link (formulário interno da app).
 
-```bash
-ng generate --help
-```
+Nome: Google
 
-## Building
+RedirectTo: https://www.google.com
 
-To build the project run:
+Será gerado automaticamente algo como:
 
-```bash
-ng build
-```
+json
+Copiar código
+{
+  "name": "Google",
+  "redirectTo": "https://www.google.com",
+  "hash": "aB3kXy"
+}
+Na lista, vais ver:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+nginx
+Copiar código
+Nome      Hash      RedirectTo
+Google    aB3kXy    https://www.google.com
+Ao abrir http://localhost:4200/aB3kXy, és automaticamente redirecionado para https://www.google.com.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Se o hash não existir, surge uma página de erro 404.
